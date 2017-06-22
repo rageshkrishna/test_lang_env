@@ -1,0 +1,13 @@
+language: php
+php:
+  - "7.0"
+  - "7.1"
+build:
+  pre_ci:
+    - echo The PHP version is $SHIPPABLE_PHP_VERSION
+    - docker tag drydock/u16phpall:master drydock/u16phpall:v$SHIPPABLE_PHP_VERSION
+  pre_ci_boot:
+    image_name: drydock/u16phpall
+    image_tag: v$SHIPPABLE_PHP_VERSION
+  ci:
+    - echo "Hello, World!"
